@@ -63,6 +63,7 @@ export class Game {
         this.paddle.x = this.canvas.width / 2 - this.paddle.width/2;
         this.paddle.y = this.canvas.height - 50 - this.paddle.height/2;
         this.ball.isAlive = true;
+        this.ball.isActive = false;
         this.ball.x = this.canvas.width / 2;
         this.ball.y = this.canvas.height - 70;
     }

@@ -29,10 +29,12 @@ export class Ball {
         return this._r;
     }
     bounce() {
-        this.isActive = true;
-        this.speed = this.maxSpeed;
-        this.vertSpeedFactor = -1;
-        this.horizSpeedFactor = 1;
+        if(this.isActive === false) {
+            this.isActive = true;
+            this.speed = this.maxSpeed;
+            this.vertSpeedFactor = -1;
+            this.horizSpeedFactor = 1;
+        }
     }
     bounceUp() {
         this.vertSpeedFactor *= -1;
