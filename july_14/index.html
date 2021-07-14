@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sprite Animation</title>
+  <style>
+    #animation{
+      background-image: url("https://w7.pngwing.com/pngs/945/71/png-transparent-the-doraemons-sprite-animation-model-sheet-doraemon-christmas-decoration-cartoon-fictional-character-thumbnail.png");
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      width: 88px;
+      height: 114px;
+      animation-name: moveDoremon;
+      animation-timing-function: step-start;
+      animation-duration: 500ms;
+      animation-iteration-count: infinite;
+      animation-play-state: running;
+    }
+    @keyframes moveDoremon {
+      0% {
+        background-position-x: 0;
+        background-position-y: 0;
+      }
+      20% {
+        background-position-x: -80px
+      }
+      40% {
+        background-position-x: -170px
+      }
+      60% {
+        background-position-x: -260px;
+        background-position-y: 0;
+      }
+      80% {
+        background-position-x: 0;
+        background-position-y: -110px;
+      }
+      100% {
+        background-position-x: -80px;
+        background-position-y: -110px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="animation"></div>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+  </main>
+<script>
+  let img = new Image();
+  const canvas = document.querySelector("#myCanvas");
+  const ctx = canvas.getContext("2d");
+  const animFrames = [
+    {x:0,y:0,w:80, h:110},
+    {x:80,y:0,w:80, h:110},
+    {x:170,y:0,w:80, h:110},
+    {x:260,y:0,w:80, h:110},
+    {x:0,y:110,w:80, h:110},
+    {x:80,y:110,w:80, h:110},
+  ]
+  let frameCount = 0;
+
+  function draw(){
+    let frame = animFrames[frameCount];
+    if(frameCount < animFrames.length-1) {
+      frameCount++;
+    } else {
+      frameCount = 0;
+    }
+    ctx.drawImage(img,frame.x , frame.y, frame.w, frame.h, 10, 10, 80, 110);
+    // requestAnimationFrame(draw);
+  }
+  img.onload = ()=>{
+   // draw();
+    setInterval(draw, 1000/10);
+  };
+  img.src = "https://w7.pngwing.com/pngs/945/71/png-transparent-the-doraemons-sprite-animation-model-sheet-doraemon-christmas-decoration-cartoon-fictional-character-thumbnail.png";
+</script>
+</body>
+</html>
